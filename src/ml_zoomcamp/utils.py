@@ -15,3 +15,9 @@ def load_data(csv_uri, data_dir):
         df.write_parquet(path_parquet)
 
     return df
+
+
+def clean_column_names(df):
+    cols = map(str.lower, df.columns)
+    df.columns = list(map(lambda x: x.replace(" ", "_"), cols))
+    return df
