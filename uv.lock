@@ -322,7 +322,7 @@ requires-dist = [
     { name = "altair", specifier = ">=5.4.1" },
     { name = "arrow", specifier = ">=1.3.0" },
     { name = "pandas", specifier = ">=2.2.3" },
-    { name = "polars", specifier = ">=1.8.0" },
+    { name = "polars", specifier = ">=1.8.1" },
 ]
 
 [package.metadata.requires-dev]
@@ -333,11 +333,11 @@ dev = [
 
 [[package]]
 name = "narwhals"
-version = "1.8.2"
+version = "1.8.3"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/9d/78/7f9f6bcbd5702519b480c3ec65a5a6dc3fc6704f7bd41fba2257fca2f6bd/narwhals-1.8.2.tar.gz", hash = "sha256:82bc3c630dd48c30dd87e3762e785bd0ae07a6b9039fff8a8004bb452f8c7db6", size = 138734 }
+sdist = { url = "https://files.pythonhosted.org/packages/22/29/60c41ac3e22b7044fb362ad59184b9f072ca0f0b9f5597899e088fdb1fb5/narwhals-1.8.3.tar.gz", hash = "sha256:416ddc72f98884e0bf4976a453f541fb395653bddce03c27b3fa52550f325cc0", size = 140056 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/6e/20/e8183cc1d3fa65e01706c88b2b7979a242a9b45e79c0f65a9197fb6014a9/narwhals-1.8.2-py3-none-any.whl", hash = "sha256:08554e9e46411b9dba0deffe8510b948baad603270697414aebd2e5694e35a52", size = 167713 },
+    { url = "https://files.pythonhosted.org/packages/e5/d3/333dd008e41f68b62657019a29d924c81e5416b2a87703abe38044f4e0e3/narwhals-1.8.3-py3-none-any.whl", hash = "sha256:818bf31a24ecf74a1c757220dee004c6b261364c9127c95ba4cc5530205709a4", size = 169083 },
 ]
 
 [[package]]
