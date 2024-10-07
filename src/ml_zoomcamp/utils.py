@@ -29,6 +29,5 @@ def normalize_name(s: str) -> str:
 
 
 def clean_column_names(df: pl.DataFrame) -> pl.DataFrame:
-    cols = map(normalize_name, df.columns)
-    df.columns = list(cols)
+    df.columns = [*map(normalize_name, df.columns)]
     return df
