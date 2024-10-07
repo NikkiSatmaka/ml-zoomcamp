@@ -1,3 +1,4 @@
+import re
 from pathlib import Path
 
 import polars as pl
@@ -17,7 +18,17 @@ def load_data(csv_source, data_dir: Path) -> pl.DataFrame:
     return df
 
 
+def clean_alphanumeric(s: str) -> str:
+    s = re.sub(r"[^\w\s]", "", s)
+    s = re.sub(r"\s+", "_", s)
+    return s
+
+
+def normalize_name(s: str) -> str:
+    return clean_alphanumeric(s).lower()
+
+
 def clean_column_names(df: pl.DataFrame) -> pl.DataFrame:
-    cols = map(str.lower, df.columns)
-    df.columns = list(map(lambda x: x.replace(" ", "_"), cols))
+    cols = map(normalize_name, df.columns)
+    df.columns = list(cols)
     return df
