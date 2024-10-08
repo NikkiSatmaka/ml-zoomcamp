@@ -48,7 +48,7 @@ def train_linear_regression(X: np.ndarray, y: np.ndarray, r: float = 0) -> tuple
     X = np.column_stack([ones, X])
 
     XTX = X.T @ X
-    XTX = XTX + r * np.eye(XTX.shape[0])
+    XTX += r * np.eye(XTX.shape[0])
 
     XTX_inv = np.linalg.inv(XTX)
     w_full = XTX_inv @ X.T @ y
