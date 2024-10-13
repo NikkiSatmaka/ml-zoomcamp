@@ -4,7 +4,7 @@ from pathlib import Path
 import polars as pl
 
 
-def load_data(csv_source, data_dir: Path) -> pl.DataFrame:
+def load_data(csv_source, data_dir: Path, **kwargs) -> pl.DataFrame:
     stem = Path(csv_source).stem
     name_parquet = stem + ".parquet"
     path_parquet = data_dir.joinpath(name_parquet)
@@ -12,7 +12,7 @@ def load_data(csv_source, data_dir: Path) -> pl.DataFrame:
     if path_parquet.exists():
         df = pl.read_parquet(path_parquet)
     else:
-        df = pl.read_csv(csv_source)
+        df = pl.read_csv(csv_source, **kwargs)
         df.write_parquet(path_parquet)
 
     return df
