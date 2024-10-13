@@ -1,5 +1,6 @@
 import numpy as np
 import polars as pl
+from polars.testing import assert_frame_equal
 
 
 def train_val_test_split(
@@ -24,7 +25,7 @@ def train_val_test_split(
     df_val = df[idx[n_train : n_train + n_val]]
     df_test = df[idx[n_train + n_val :]]
 
-    assert df[idx].equals(df_train.vstack(df_val).vstack(df_test))
+    assert_frame_equal(df[idx], df_train.vstack(df_val).vstack(df_test))
 
     y_train = df_train.select(pl.col(y_col)).to_numpy().flatten()
     y_val = df_val.select(pl.col(y_col)).to_numpy().flatten()
