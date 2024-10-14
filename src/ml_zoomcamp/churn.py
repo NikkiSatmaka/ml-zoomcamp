@@ -25,7 +25,7 @@ def get_churn_score_pipeline(
     num_cols: list,
     C: float = 1.0,
 ) -> np.float64:
-    ohe: OneHotEncoder = OneHotEncoder(sparse_output=False)
+    ohe: OneHotEncoder = OneHotEncoder(sparse_output=False, handle_unknown="ignore")
     ohe.fit(df_train[cat_cols])
 
     X_train: np.ndarray = prepare_X(df_train, ohe, cat_cols, num_cols)
