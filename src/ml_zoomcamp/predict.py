@@ -4,49 +4,35 @@
 import pickle
 from pathlib import Path
 
-from loguru import logger
+from flask import Flask, jsonify, request
 
 ROOT_DIR = Path(__file__).absolute().parent.parent.parent
-DATA_DIR = ROOT_DIR.joinpath("data")
 MODEL_DIR = ROOT_DIR.joinpath("model")
 
 MODEL_FILE = "model_C=1.0.bin"
 
 MODEL_PATH = MODEL_DIR.joinpath(MODEL_FILE)
 
-CUSTOMER = {
-    "gender": "female",
-    "seniorcitizen": 0,
-    "partner": "yes",
-    "dependents": "no",
-    "tenure": 1,
-    "phoneservice": "no",
-    "multiplelines": "no_phone_service",
-    "internetservice": "dsl",
-    "onlinesecurity": "no",
-    "onlinebackup": "yes",
-    "deviceprotection": "no",
-    "techsupport": "no",
-    "streamingtv": "no",
-    "streamingmovies": "no",
-    "contract": "month_to_month",
-    "paperlessbilling": "yes",
-    "paymentmethod": "electronic_check",
-    "monthlycharges": 29.85,
-    "totalcharges": 29.85,
-}
+with MODEL_PATH.open("rb") as f_in:
+    dv, model = pickle.load(f_in)
+
+app = Flask("churn")
 
 
-def main():
-    with MODEL_PATH.open("rb") as f_in:
-        dv, model = pickle.load(f_in)
+@app.route("/predict", methods=["POST"])
+def predict():
+    customer = request.get_json()
 
-    X = dv.transform([CUSTOMER])
+    X = dv.transform([customer])
     y_pred = model.predict_proba(X)[0, 1]
+    churn = y_pred >= 0.5
 
-    logger.info(f"Input: {CUSTOMER}")
-    logger.info(f"Churn probability: {y_pred}")
+    result = {
+        "churn_probability": float(y_pred),
+        "churn": bool(churn),
+    }
+    return jsonify(result)
 
 
 if __name__ == "__main__":
-    main()
+    app.run(host="0.0.0.0", port=9696, debug=True)
