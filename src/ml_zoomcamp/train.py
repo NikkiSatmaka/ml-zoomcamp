@@ -68,6 +68,8 @@ def predict(df, dv, model):
 
 
 def main():
+    MODEL_DIR.mkdir(exist_ok=True)
+
     ## Data Preparation
 
     df = load_data(CSV_URI, DATA_DIR)
