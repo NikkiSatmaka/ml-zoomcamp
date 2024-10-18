@@ -32,4 +32,4 @@ ENV PATH="/app/.venv/bin:$PATH"
 
 EXPOSE 9696
 
-ENTRYPOINT [ "gunicorn", "--bind=0.0.0.0:9696", "ml_zoomcamp.predict:app" ]
+ENTRYPOINT [ "gunicorn", "--bind", "0.0.0.0:9696", "ml_zoomcamp.predict:app" ]
