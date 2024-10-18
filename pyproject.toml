@@ -11,7 +11,7 @@ dependencies = [
 ]
 
 [project.scripts]
-hello = "ml_zoomcamp:hello"
+hello = "ml_zoomcamp:main"
 
 [build-system]
 requires = ["hatchling"]
