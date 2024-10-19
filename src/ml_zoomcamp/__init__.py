@@ -1,2 +1,2 @@
-def hello() -> None:
+def main() -> None:
     print("Hello from ml-zoomcamp!")
