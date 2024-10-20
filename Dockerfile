@@ -19,8 +19,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 # Then, add the rest of the project source code and install it
 # Installing separately from its dependencies allows optimal layer caching
 COPY .python-version pyproject.toml README.md uv.lock /app/
-COPY src/ml_zoomcamp/__init__.py /app/src/ml_zoomcamp/__init__.py
-COPY src/ml_zoomcamp/predict.py /app/src/ml_zoomcamp/predict.py
+COPY apps/churn-decision-flask /app
 
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen --no-dev
@@ -32,4 +31,4 @@ ENV PATH="/app/.venv/bin:$PATH"
 
 EXPOSE 9696
 
-ENTRYPOINT [ "gunicorn", "--bind", "0.0.0.0:9696", "ml_zoomcamp.predict:app" ]
+ENTRYPOINT [ "gunicorn", "--bind", "0.0.0.0:9696", "churn-decision:app" ]

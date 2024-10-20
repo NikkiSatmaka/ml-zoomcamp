@@ -6,7 +6,7 @@ from pathlib import Path
 
 from flask import Flask, jsonify, request
 
-ROOT_DIR = Path(__file__).absolute().parent.parent.parent
+ROOT_DIR = Path(__file__).absolute().parent
 MODEL_DIR = ROOT_DIR.joinpath("model")
 
 MODEL_FILE = "model_C=1.0.bin"
