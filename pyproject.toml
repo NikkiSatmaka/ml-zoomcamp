@@ -14,6 +14,7 @@ dependencies = [
 [project.scripts]
 ml-zoomcamp = "ml_zoomcamp:main"
 train = "ml_zoomcamp.train:main"
+predict-test = "ml_zoomcamp.predict_test:main"
 
 [build-system]
 requires = ["hatchling"]
