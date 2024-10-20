@@ -18,13 +18,14 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 
 # Then, add the rest of the project source code and install it
 # Installing separately from its dependencies allows optimal layer caching
-COPY .python-version pyproject.toml README.md uv.lock /app/
-COPY apps/churn-decision-flask /app
+COPY uv.lock /app
+COPY apps/churn-decision-flask/pyproject.toml /app
 
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen --no-dev
 
-COPY model/ /app/model/
+COPY apps/churn-decision-flask /app
+COPY model/ /app/model
 
 # Place executables in the environment at the front of the path
 ENV PATH="/app/.venv/bin:$PATH"
