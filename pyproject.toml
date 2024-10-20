@@ -5,11 +5,10 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "fastapi>=0.115.2",
+    "fastapi[standard]>=0.115.2",
     "flask>=3.0.3",
     "gunicorn>=23.0.0",
     "scikit-learn==1.5.2",
-    "uvicorn>=0.32.0",
 ]
 
 [project.scripts]
@@ -38,4 +37,4 @@ dev-dependencies = [
 ]
 
 [tool.uv.workspace]
-members = ["apps/churn-decision-flask"]
+members = ["apps/churn-decision-flask", "apps/churn-decision-fastapi"]
