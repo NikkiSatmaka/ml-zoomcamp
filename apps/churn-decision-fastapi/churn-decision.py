@@ -14,7 +14,6 @@ MODEL_PATH = MODEL_DIR.joinpath(MODEL_FILE)
 with MODEL_PATH.open("rb") as f_in:
     dv, model = pickle.load(f_in)
 
-
 app = FastAPI()
 
 
