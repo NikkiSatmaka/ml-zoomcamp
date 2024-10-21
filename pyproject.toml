@@ -38,4 +38,4 @@ dev-dependencies = [
 ]
 
 [tool.uv.workspace]
-members = ["apps/churn-decision-flask", "apps/churn-decision-fastapi", "apps/bank-marketing"]
+members = ["apps/churn-decision-flask", "apps/churn-decision-fastapi", "apps/bank-marketing", "apps/svizor-bank-marketing"]

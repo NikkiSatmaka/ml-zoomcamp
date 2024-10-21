@@ -11,6 +11,7 @@ members = [
     "churn-decision-fastapi",
     "churn-decision-flask",
     "ml-zoomcamp",
+    "svizor-bank-marketing",
 ]
 
 [[package]]
@@ -1668,6 +1669,21 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/4b/cb/244daf0d7be4508099ad5bca3cdfe8b8b5538acd719c5f397f614e569fff/starlette-0.40.0.tar.gz", hash = "sha256:1a3139688fb298ce5e2d661d37046a66ad996ce94be4d4983be019a23a04ea35", size = 2573611 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/0a/0f/64baf7a06492e8c12f5c4b49db286787a7255195df496fc21f5fd9eecffa/starlette-0.40.0-py3-none-any.whl", hash = "sha256:c494a22fae73805376ea6bf88439783ecfba9aac88a43911b48c653437e784c4", size = 73303 },
+]
+
+[[package]]
+name = "svizor-bank-marketing"
+version = "0.1.0"
+source = { virtual = "apps/svizor-bank-marketing" }
+dependencies = [
+    { name = "fastapi", extra = ["standard"] },
+    { name = "scikit-learn" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "fastapi", extras = ["standard"], specifier = ">=0.115.2" },
+    { name = "scikit-learn", specifier = "==1.5.2" },
 ]
 
 [[package]]
