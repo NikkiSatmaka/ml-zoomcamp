@@ -3,6 +3,9 @@ name = "ml-zoomcamp"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
+authors = [
+    { name = "Nikki Satmaka", email = "30800020+NikkiSatmaka@users.noreply.github.com" }
+]
 requires-python = ">=3.12"
 dependencies = [
     "fastapi[standard]>=0.115.2",
@@ -20,8 +23,8 @@ predict-test = "ml_zoomcamp.predict_test:main"
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
-[tool.uv]
-dev-dependencies = [
+[dependency-groups]
+dev = [
     "arrow>=1.3.0",
     "awsebcli>=3.21.0",
     "httpx>=0.27.2",
