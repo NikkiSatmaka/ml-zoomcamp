@@ -31,8 +31,8 @@ dev = [
     "ipykernel>=6.29.5",
     "ipywidgets>=8.1.5",
     "loguru>=0.7.2",
-    "matplotlib>=3.9.2",
     "polars[pandas,plot]>=1.12.0",
+    "seaborn>=0.13.2",
     "tqdm>=4.66.5",
 ]
 lint = [
