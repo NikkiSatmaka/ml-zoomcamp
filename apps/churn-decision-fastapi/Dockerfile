@@ -13,23 +13,22 @@ ENV UV_LINK_MODE=copy
 # Install the project's dependencies using the lockfile and settings
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
-    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    --mount=type=bind,source=apps/churn-decision-fastapi/pyproject.toml,target=pyproject.toml \
     uv sync --frozen --no-install-project --no-dev
 
 # Then, add the rest of the project source code and install it
 # Installing separately from its dependencies allows optimal layer caching
 COPY uv.lock /app
-COPY apps/churn-decision-fastapi/pyproject.toml /app
-
-RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --frozen --no-dev
-
 COPY apps/churn-decision-fastapi /app
 COPY model/ /app/model
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --frozen --no-dev
 
 # Place executables in the environment at the front of the path
 ENV PATH="/app/.venv/bin:$PATH"
 
 EXPOSE 9696
 
-ENTRYPOINT [ "fastapi", "run", "--host", "0.0.0.0", "--port", "9696", "churn-decision.py" ]
+ENTRYPOINT []
+
+CMD [ "fastapi", "run", "--host", "0.0.0.0", "--port", "9696", "churn-decision.py" ]
